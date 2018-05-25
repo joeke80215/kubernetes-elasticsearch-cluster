@@ -70,5 +70,5 @@ spec:
             name: "storage"
       livenessProbe:
           tcpSocket:
-          port: transport
+            port: transport
           initialDelaySeconds: 30
