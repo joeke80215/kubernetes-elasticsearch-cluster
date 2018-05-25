@@ -74,7 +74,3 @@ spec:
           - emptyDir:
               medium: ""
             name: storage
-      livenessProbe:
-          tcpSocket:
-            port: transport
-          initialDelaySeconds: 30
