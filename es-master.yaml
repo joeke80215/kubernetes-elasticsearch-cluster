@@ -41,7 +41,7 @@ spec:
         - name: NUMBER_OF_MASTERS
           value: "2"
         - name: NODE_MASTER
-          value: "true"
+          value: "false"
         - name: NODE_INGEST
           value: "false"
         - name: NODE_DATA
@@ -57,10 +57,11 @@ spec:
           tcpSocket:
             port: transport
           initialDelaySeconds: 30
+#          timeoutSeconds: 5
         volumeMounts:
         - name: storage
           mountPath: /data
       volumes:
-      - name: storage
-        persistentVolumeClaim:
-          claimName: elk-claim
+      - emptyDir:
+          medium: ""
+        name: "storage"
