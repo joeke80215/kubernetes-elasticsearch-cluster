@@ -54,13 +54,13 @@ spec:
         livenessProbe:
           tcpSocket:
             port: transport
-          initialDelaySeconds: 30
+          initialDelaySeconds: 120
 #          timeoutSeconds: 5
         readinessProbe:
           httpGet:
             path: /_cluster/health
             port: http
-          initialDelaySeconds: 20
+          initialDelaySeconds: 30
           timeoutSeconds: 5
         volumeMounts:
         - name: storage
