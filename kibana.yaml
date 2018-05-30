@@ -20,11 +20,11 @@ spec:
         env:
         - name: CLUSTER_NAME
           value: myesdb
-        resources:
-          limits:
-            cpu: 1000m
-          requests:
-            cpu: 100m
+#        resources:
+#          limits:
+#            cpu: 1000m
+#          requests:
+#            cpu: 100m
         ports:
         - containerPort: 5601
           name: http
