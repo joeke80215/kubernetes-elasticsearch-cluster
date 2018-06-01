@@ -63,16 +63,16 @@ spec:
         volumeMounts:
         - name: storage
           mountPath: /data
-#  volumeClaimTemplates:
-#    - metadata:
-#        name: storage
-#      spec:
-#        storageClassName: managed-nfs-storage
-#        accessModes: [ ReadWriteOnce ]
-#        resources:
-#          requests:
-#            storage: 130Gi
-      volumes:
-      - name: storage
-        persistentVolumeClaim:
-          claimName: elk-claim
+  volumeClaimTemplates:
+    - metadata:
+        name: storage
+      spec:
+        storageClassName: managed-nfs-storage
+        accessModes: [ ReadWriteOnce ]
+        resources:
+          requests:
+            storage: 65Gi
+#      volumes:
+#      - name: storage
+#        persistentVolumeClaim:
+#          claimName: elk-claim
