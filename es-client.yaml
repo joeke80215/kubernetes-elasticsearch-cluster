@@ -46,6 +46,13 @@ spec:
           value: -Xms2g -Xmx2g
         - name: NETWORK_HOST
           value: _site_,_lo_
+        - name: PROCESSORS
+          valueFrom:
+            resourceFieldRef:
+              resource: limits.cpu
+        resources:
+          limits:
+            cpu: 1
         ports:
         - containerPort: 9200
           name: http
@@ -55,7 +62,6 @@ spec:
           tcpSocket:
             port: transport
           initialDelaySeconds: 120
-#          timeoutSeconds: 5
         readinessProbe:
           httpGet:
             path: /_cluster/health
@@ -66,6 +72,6 @@ spec:
         - name: storage
           mountPath: /data
       volumes:
-      - emptyDir:
-          medium: ""
-        name: "storage"
+          - emptyDir:
+              medium: ""
+            name: storage

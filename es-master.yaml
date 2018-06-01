@@ -15,7 +15,7 @@ spec:
     spec:
       initContainers:
       - name: init-sysctl
-        image: busybox:1.28.4
+        image: busybox:1.27.2
         command:
         - sysctl
         - -w
@@ -25,8 +25,6 @@ spec:
       containers:
       - name: es-master
         image: quay.io/pires/docker-elasticsearch-kubernetes:6.2.4
-        securityContext:
-          privileged:  true
         env:
         - name: NAMESPACE
           valueFrom:
@@ -50,6 +48,13 @@ spec:
           value: "false"
         - name: ES_JAVA_OPTS
           value: -Xms1g -Xmx1g
+        - name: PROCESSORS
+          valueFrom:
+            resourceFieldRef:
+              resource: limits.cpu
+        resources:
+          limits:
+            cpu: 1
         ports:
         - containerPort: 9300
           name: transport
@@ -57,11 +62,10 @@ spec:
           tcpSocket:
             port: transport
           initialDelaySeconds: 120
-#          timeoutSeconds: 5
         volumeMounts:
         - name: storage
           mountPath: /data
       volumes:
-      - emptyDir:
-          medium: ""
-        name: "storage"
+          - emptyDir:
+              medium: ""
+            name: "storage"
