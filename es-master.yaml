@@ -48,13 +48,13 @@ spec:
           value: "false"
         - name: ES_JAVA_OPTS
           value: -Xms1g -Xmx1g
-        - name: PROCESSORS
-          valueFrom:
-            resourceFieldRef:
-              resource: limits.cpu
-        resources:
-          limits:
-            cpu: 1
+#        - name: PROCESSORS
+#          valueFrom:
+#            resourceFieldRef:
+#              resource: limits.cpu
+#        resources:
+#          limits:
+#            cpu: 1
         ports:
         - containerPort: 9300
           name: transport
