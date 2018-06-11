@@ -6,7 +6,7 @@ metadata:
     component: elasticsearch
     role: master
 spec:
-  replicas: 3
+  replicas: 2
   template:
     metadata:
       labels:
@@ -47,7 +47,7 @@ spec:
         - name: HTTP_ENABLE
           value: "false"
         - name: ES_JAVA_OPTS
-          value: -Xms1g -Xmx1g
+          value: -Xms2g -Xmx2g
 #        - name: PROCESSORS
 #          valueFrom:
 #            resourceFieldRef:
