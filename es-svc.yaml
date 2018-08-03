@@ -12,4 +12,3 @@ spec:
   ports:
   - name: http
     port: 9200
-  type: NodePort
